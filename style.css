@@ -10,12 +10,8 @@ body {
 
 #clicker-button {
     display: block;
-    margin: 20px auto;
-    border: none;
-    background: none;
-}
-
-#clicker-button img {
     width: 100px;
     height: auto;
+    margin: 20px auto;
+    cursor: pointer;
 }
