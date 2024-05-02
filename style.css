@@ -1,6 +1,7 @@
 body {
     text-align: center;
     font-family: Arial, sans-serif;
+    background-color: white; /* Установите белый фон, если он уже не установлен */
 }
 
 #balance {
@@ -10,8 +11,13 @@ body {
 
 #clicker-button {
     display: block;
-    width: 100px;
-    height: auto;
-    margin: 20px auto;
+    margin: 0 auto; /* Центрирует изображение по горизонтали */
     cursor: pointer;
+    border: none; /* Убирает стандартную рамку кнопки */
+    background: none; /* Убирает фон кнопки */
+}
+
+#clicker-button img {
+    width: 100px; /* Или любой другой размер, который вам нужен */
+    height: auto;
 }
