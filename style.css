@@ -1,0 +1,13 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+#balance {
+    font-size: 2em;
+    margin-top: 20%;
+}
+
+#clicker-button:checked ~ #balance::before {
+    content: "Баланс: 0.001 гривен";
+}
