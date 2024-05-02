@@ -5,7 +5,7 @@ body {
 }
 
 #balance {
-    font-size: 2em;
+    font-size: 1.5em; /* Уменьшаем размер текста баланса */
     margin-top: 20%;
 }
 
@@ -18,6 +18,6 @@ body {
 }
 
 #clicker-button img {
-    width: 100px; /* Или любой другой размер, который вам нужен */
+    width: 150px; /* Увеличиваем размер монетки */
     height: auto;
 }
