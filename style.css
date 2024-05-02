@@ -21,3 +21,12 @@ body {
     width: 150px; /* Увеличиваем размер монетки */
     height: auto;
 }
+
+#daily-bonus {
+    font-size: 1.2em; /* Размер текста кнопки */
+    padding: 10px; /* Отступ внутри кнопки */
+    margin-top: 20px; /* Отступ сверху */
+    background-color: #4CAF50; /* Зеленый фон */
+    color: white; /* Белый текст */
+    border-radius: 5px; /* Скругленные углы */
+}
