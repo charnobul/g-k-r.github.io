@@ -8,6 +8,9 @@ body {
     margin-top: 20%;
 }
 
-#clicker-button:checked ~ #balance::before {
-    content: "Баланс: 0.001 гривен";
+#clicker-button {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
 }
