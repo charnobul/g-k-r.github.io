@@ -9,7 +9,7 @@ body {
     margin-top: 20%;
 }
 
-#clicker-button, #initial-bonus {
+#clicker-button {
     display: block;
     margin: 0 auto; /* Центрирует изображение по горизонтали */
     cursor: pointer;
@@ -20,13 +20,4 @@ body {
 #clicker-button img {
     width: 150px; /* Увеличиваем размер монетки */
     height: auto;
-}
-
-#initial-bonus {
-    font-size: 1.2em; /* Размер текста кнопки */
-    padding: 10px; /* Отступ внутри кнопки */
-    margin-top: 20px; /* Отступ сверху */
-    background-color: #4CAF50; /* Зеленый фон */
-    color: white; /* Белый текст */
-    border-radius: 5px; /* Скругленные углы */
 }
