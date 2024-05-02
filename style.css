@@ -9,7 +9,7 @@ body {
     margin-top: 20%;
 }
 
-#clicker-button {
+#clicker-button, #daily-bonus {
     display: block;
     margin: 0 auto; /* Центрирует изображение по горизонтали */
     cursor: pointer;
