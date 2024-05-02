@@ -9,7 +9,7 @@ body {
     margin-top: 20%;
 }
 
-#clicker-button, #daily-bonus {
+#clicker-button, #initial-bonus {
     display: block;
     margin: 0 auto; /* Центрирует изображение по горизонтали */
     cursor: pointer;
@@ -22,7 +22,7 @@ body {
     height: auto;
 }
 
-#daily-bonus {
+#initial-bonus {
     font-size: 1.2em; /* Размер текста кнопки */
     padding: 10px; /* Отступ внутри кнопки */
     margin-top: 20px; /* Отступ сверху */
