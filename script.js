@@ -4,11 +4,11 @@ let button = document.getElementById('clicker-button');
 // Обновляем баланс при загрузке страницы
 document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(3) + ' гривен';
 
-button.addEventListener('mousedown', function() {
+button.addEventListener('touchstart', function() {
     button.style.transform = 'scale(0.95)';
 });
 
-button.addEventListener('mouseup', function() {
+button.addEventListener('touchend', function() {
     button.style.transform = 'scale(1)';
 });
 
