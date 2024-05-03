@@ -15,10 +15,8 @@ button.addEventListener('touchend', function() {
 
 button.addEventListener('click', function() {
     balance += 0.001;
-    requestAnimationFrame(function() { // Используем requestAnimationFrame вместо setTimeout
-        document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(3) + ' гривен';
-        localStorage.setItem('balance', balance.toFixed(3));
-    });
+    document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(3) + ' гривен';
+    localStorage.setItem('balance', balance.toFixed(3));
 
     // Добавляем вибрацию
     if (window.navigator && typeof window.navigator.vibrate === 'function') {
