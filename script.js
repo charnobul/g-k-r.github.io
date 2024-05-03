@@ -3,6 +3,8 @@ let button = document.getElementById('clicker-button');
 let clickSound = new Audio('sounds/click.mp3'); // Замените на путь к вашему аудиофайлу
 
 clickSound.volume = 0.5; // Устанавливаем громкость на 50%
+clickSound.muted = true; // Включаем режим "без звука"
+clickSound.play(); // Проигрываем звук
 
 // Обновляем баланс при загрузке страницы
 document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(3) + ' гривен';
@@ -26,5 +28,6 @@ button.addEventListener('click', function() {
     }
 
     // Проигрываем звук
+    clickSound.muted = false; // Выключаем режим "без звука"
     clickSound.play();
 });
