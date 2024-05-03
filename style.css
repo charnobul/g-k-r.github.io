@@ -15,11 +15,6 @@ body {
     cursor: pointer;
     border: none;
     background: none;
-    transition: transform 0.1s; /* Добавляем анимацию */
-}
-
-#clicker-button:active { /* Добавляем стиль для активного состояния кнопки */
-    transform: scale(0.95); /* Уменьшаем размер кнопки на 5% */
 }
 
 #clicker-button img {
