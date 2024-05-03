@@ -15,9 +15,11 @@ body {
     cursor: pointer;
     border: none;
     background: none;
+    -webkit-tap-highlight-color: transparent; /* Отключаем выделение на iOS и Android */
 }
 
 #clicker-button img {
     width: 150px;
     height: auto;
+    pointer-events: none; /* Отключаем выделение на других браузерах */
 }
