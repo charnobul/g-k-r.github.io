@@ -2,22 +2,23 @@ body {
     text-align: center;
     font-family: Arial, sans-serif;
     background-color: white;
+    overflow-x: hidden;
 }
 
 #balance {
     font-size: 1.5em;
-    margin-top: 20%;
+    margin: auto;
 }
 
 #clicker-button {
     display: block;
-    margin: 0 auto;
+    margin: auto;
     cursor: pointer;
     border: none;
     background: none;
 }
 
 #clicker-button img {
-    width: 150px;
+    width: 120px;
     height: auto;
 }
