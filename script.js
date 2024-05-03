@@ -1,5 +1,6 @@
 let balance = localStorage.getItem('balance') ? parseFloat(localStorage.getItem('balance')) : 1;
 let button = document.getElementById('clicker-button');
+let clickSound = new Audio('sounds/click.mp3'); // Замените на путь к вашему аудиофайлу
 
 // Обновляем баланс при загрузке страницы
 document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(3) + ' гривен';
@@ -12,14 +13,6 @@ button.addEventListener('touchend', function() {
     button.style.transform = 'scale(1)';
 });
 
-button.addEventListener('touchcancel', function() {
-    button.style.transform = 'scale(1)';
-});
-
-button.addEventListener('touchmove', function() {
-    button.style.transform = 'scale(1)';
-});
-
 button.addEventListener('click', function() {
     balance += 0.001;
     document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(3) + ' гривен';
@@ -29,4 +22,7 @@ button.addEventListener('click', function() {
     if (window.navigator && typeof window.navigator.vibrate === 'function') {
         window.navigator.vibrate(100);
     }
+
+    // Проигрываем звук
+    clickSound.play();
 });
