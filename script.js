@@ -9,7 +9,7 @@ document.getElementById('clicker-button').addEventListener('click', function() {
     localStorage.setItem('balance', balance.toFixed(3));
 
     // Добавляем вибрацию
-    if (window.navigator && window.navigator.vibrate) { // Проверяем, поддерживает ли браузер Vibration API
-        navigator.vibrate(100); // Вибрация длительностью 100 миллисекунд
+    if (window.navigator && typeof window.navigator.vibrate === 'function') {
+        window.navigator.vibrate(100);
     }
 });
