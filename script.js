@@ -1,4 +1,4 @@
-let balance = localStorage.getItem('balance') ? parseFloat(localStorage.getItem('balance')) : 0;
+let balance = localStorage.getItem('balance') ? parseFloat(localStorage.getItem('balance')) : 1; // Изменено здесь
 
 // Обновляем баланс при загрузке страницы
 document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(3) + ' гривен';
