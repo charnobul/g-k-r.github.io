@@ -14,11 +14,11 @@ button.addEventListener('touchend', function() {
 });
 
 button.addEventListener('click', function() {
-    setTimeout(function() { // Добавляем задержку
-        balance += 0.001;
+    balance += 0.001;
+    requestAnimationFrame(function() { // Используем requestAnimationFrame вместо setTimeout
         document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(3) + ' гривен';
         localStorage.setItem('balance', balance.toFixed(3));
-    }, 200); // Задержка в 200 миллисекунд
+    });
 
     // Добавляем вибрацию
     if (window.navigator && typeof window.navigator.vibrate === 'function') {
