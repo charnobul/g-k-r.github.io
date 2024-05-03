@@ -1,8 +1,6 @@
 let balance = localStorage.getItem('balance') ? parseFloat(localStorage.getItem('balance')) : 1;
 let button = document.getElementById('clicker-button');
-let clickSound = new Audio('sounds/click.mp3'); // Замените на путь к вашему аудиофайлу
-
-clickSound.volume = 0.5; // Устанавливаем громкость на 50%
+let clickSound = new Audio('sounds/2e371cbd1ce9be1.mp3'); // Замените на путь к вашему аудиофайлу
 
 // Обновляем баланс при загрузке страницы
 document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(3) + ' гривен';
