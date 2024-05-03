@@ -1,23 +1,23 @@
 body {
     text-align: center;
     font-family: Arial, sans-serif;
-    background-color: white; /* Установите белый фон, если он уже не установлен */
+    background-color: white;
 }
 
 #balance {
-    font-size: 1.5em; /* Уменьшаем размер текста баланса */
+    font-size: 1.5em;
     margin-top: 20%;
 }
 
 #clicker-button {
     display: block;
-    margin: 0 auto; /* Центрирует изображение по горизонтали */
+    margin: 0 auto;
     cursor: pointer;
-    border: none; /* Убирает стандартную рамку кнопки */
-    background: none; /* Убирает фон кнопки */
+    border: none;
+    background: none;
 }
 
 #clicker-button img {
-    width: 150px; /* Увеличиваем размер монетки */
+    width: 150px;
     height: auto;
 }
