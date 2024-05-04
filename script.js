@@ -17,7 +17,7 @@ button.addEventListener('touchend', function() {
 });
 
 button.addEventListener('click', function() {
-    balance += 0.01 * farms;
+    balance += 0.01;
     document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(2) + ' гривен';
     localStorage.setItem('balance', balance.toFixed(2));
 
@@ -29,6 +29,26 @@ button.addEventListener('click', function() {
     // Проигрываем звук
     clickSound.play();
 });
+
+shopButton.addEventListener('click', function() {
+    if (balance >= 1) {
+        balance -= 1;
+        farms += 1;
+        document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(2) + ' гривен';
+        document.getElementById('farm-counter').textContent = farms;
+        localStorage.setItem('balance', balance.toFixed(2));
+        localStorage.setItem('farms', farms);
+    } else {
+        alert('Недостаточно средств для покупки фермы');
+    }
+});
+
+// Обновляем баланс каждую секунду
+setInterval(function() {
+    balance += 0.01 * farms;
+    document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(2) + ' гривен';
+    localStorage.setItem('balance', balance.toFixed(2));
+}, 1000);
 
 shopButton.addEventListener('click', function() {
     if (balance >= 1) {
