@@ -64,3 +64,14 @@ body {
     color: white;
     cursor: pointer;
 }
+
+#reset-button {
+    display: block;
+    margin-top: 2vh;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    background-color: #FF0000;
+    color: white;
+    cursor: pointer;
+}
