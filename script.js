@@ -45,7 +45,7 @@ shopButton.addEventListener('click', function() {
 
 // Обновляем баланс каждую секунду
 setInterval(function() {
-    balance += 0.001 * farms;
+    balance += 0.010 * farms;
     document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(3) + ' гривен';
     localStorage.setItem('balance', balance.toFixed(3));
 }, 1000);
