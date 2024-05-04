@@ -1,10 +1,12 @@
 let balance = localStorage.getItem('balance') ? parseFloat(localStorage.getItem('balance')) : 1;
+let farms = localStorage.getItem('farms') ? parseInt(localStorage.getItem('farms')) : 0;
 let button = document.getElementById('clicker-button');
-let shopButton = document.getElementById('shop-button');
+let shopButton = document.getElementById('buy-farm');
 let clickSound = new Audio('sounds/2e371cbd1ce9be1.mp3'); // Замените на путь к вашему аудиофайлу
 
-// Обновляем баланс при загрузке страницы
+// Обновляем баланс и количество ферм при загрузке страницы
 document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(3) + ' гривен';
+document.getElementById('farm-counter').textContent = farms;
 
 button.addEventListener('touchstart', function() {
     button.style.transform = 'scale(0.95)';
@@ -15,7 +17,7 @@ button.addEventListener('touchend', function() {
 });
 
 button.addEventListener('click', function() {
-    balance += 0.001;
+    balance += 0.001 * farms;
     document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(3) + ' гривен';
     localStorage.setItem('balance', balance.toFixed(3));
 
@@ -29,6 +31,21 @@ button.addEventListener('click', function() {
 });
 
 shopButton.addEventListener('click', function() {
-    // Здесь вы можете добавить код для открытия магазина
-    alert('Магазин пока не доступен');
+    if (balance >= 0.100) {
+        balance -= 0.100;
+        farms += 1;
+        document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(3) + ' гривен';
+        document.getElementById('farm-counter').textContent = farms;
+        localStorage.setItem('balance', balance.toFixed(3));
+        localStorage.setItem('farms', farms);
+    } else {
+        alert('Недостаточно средств для покупки фермы');
+    }
 });
+
+// Обновляем баланс каждую секунду
+setInterval(function() {
+    balance += 0.001 * farms;
+    document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(3) + ' гривен';
+    localStorage.setItem('balance', balance.toFixed(3));
+}, 1000);
