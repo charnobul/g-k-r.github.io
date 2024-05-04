@@ -36,7 +36,7 @@ button.addEventListener('click', function() {
 
 for (let i = 0; i < shopButtons.length; i++) {
     shopButtons[i].addEventListener('click', function() {
-        let cost = i === 0 ? 1 * Math.pow(1.1, farms[0]) : 100 * Math.pow(1.1, farms[1]);
+        let cost = i === 0 ? 1 : 100;
         let income = i === 0 ? 0.01 : 1;
         if (balance >= cost) {
             balance -= cost;
