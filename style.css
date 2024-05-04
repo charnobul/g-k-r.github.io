@@ -9,6 +9,8 @@ body {
     text-align: center;
     font-family: Arial, sans-serif;
     background-color: white;
+    position: fixed;
+    width: 100%;
 }
 
 #balance {
@@ -20,6 +22,7 @@ body {
     cursor: pointer;
     border: none;
     background: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 #clicker-button img {
