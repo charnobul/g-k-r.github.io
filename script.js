@@ -1,5 +1,6 @@
 let balance = localStorage.getItem('balance') ? parseFloat(localStorage.getItem('balance')) : 1;
 let button = document.getElementById('clicker-button');
+let shopButton = document.getElementById('shop-button');
 let clickSound = new Audio('sounds/2e371cbd1ce9be1.mp3'); // Замените на путь к вашему аудиофайлу
 
 // Обновляем баланс при загрузке страницы
@@ -25,4 +26,9 @@ button.addEventListener('click', function() {
 
     // Проигрываем звук
     clickSound.play();
+});
+
+shopButton.addEventListener('click', function() {
+    // Здесь вы можете добавить код для открытия магазина
+    alert('Магазин пока не доступен');
 });
