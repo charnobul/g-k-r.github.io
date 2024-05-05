@@ -9,7 +9,7 @@ body {
     text-align: center;
     font-family: Arial, sans-serif;
     background-color: white;
-    position: fixed;
+    position: relative;
     width: 100%;
     padding-top: 10vh;
 }
@@ -91,4 +91,12 @@ body {
     background-color: #FF0000;
     color: white;
     cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
 }
