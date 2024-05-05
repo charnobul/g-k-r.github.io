@@ -8,24 +8,31 @@
     <div id="balance">Баланс: 0 гривен</div>
     <img id="clicker-button" src="https://e.radikal.host/2024/05/02/82590444_2001_1_grivna.png" alt="Добавить гривну">
     <button id="toggle-shop">Магазин ферм</button>
-    <div id="shop" style="display: none;">
+    <div id="shop" class="hidden">
+        <!-- Фермы расположены вертикально -->
         <div class="farm">
             <img class="farm-image" src="https://i.imghippo.com/files/f3fH41714842252.png" alt="Ферма">
-            <div class="farm-counter">0</div>
-            <div class="farm-cost">1 гривна (приносит 0.01/сек)</div>
-            <button class="buy-farm">Купить</button>
+            <div class="farm-info">
+                <div class="farm-counter">0</div>
+                <div class="farm-cost">1 гривна (приносит 0.01/сек)</div>
+                <button class="buy-farm">Купить</button>
+            </div>
         </div>
         <div class="farm">
             <img class="farm-image" src="https://i.imghippo.com/files/DtC6e1714847224.png" alt="Ферма">
-            <div class="farm-counter">0</div>
-            <div class="farm-cost">100 гривен (приносит 1.00/сек)</div>
-            <button class="buy-farm">Купить</button>
+            <div class="farm-info">
+                <div class="farm-counter">0</div>
+                <div class="farm-cost">100 гривен (приносит 1.00/сек)</div>
+                <button class="buy-farm">Купить</button>
+            </div>
         </div>
         <div class="farm">
             <img class="farm-image" src="https://i.imghippo.com/files/0nuJ91714906048.png" alt="Ферма">
-            <div class="farm-counter">0</div>
-            <div class="farm-cost">10000 гривен (приносит 100.00/сек)</div>
-            <button class="buy-farm">Купить</button>
+            <div class="farm-info">
+                <div class="farm-counter">0</div>
+                <div class="farm-cost">10000 гривен (приносит 100.00/сек)</div>
+                <button class="buy-farm">Купить</button>
+            </div>
         </div>
     </div>
     <button id="reset-button">Обнулить всё</button>
