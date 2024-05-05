@@ -37,12 +37,12 @@ button.addEventListener('click', function() {
 
 shopButton.addEventListener('click', function() {
     let shop = document.getElementById('shop');
-    if (shop.style.display === 'none') {
-        shop.style.display = 'flex';
-        shopButton.textContent = '✖️ Закрыть магазин';
+    if (shop.classList.contains('hidden')) {
+        shop.classList.remove('hidden');
+        shop.classList.add('visible');
     } else {
-        shop.style.display = 'none';
-        shopButton.textContent = 'Магазин ферм';
+        shop.classList.remove('visible');
+        shop.classList.add('hidden');
     }
 });
 
@@ -65,22 +65,4 @@ for (let i = 0; i < buyButtons.length; i++) {
 
 // Обновляем баланс каждую секунду
 setInterval(function() {
-    balance += 0.01 * farms[0] + 1 * farms[1] + 100 * farms[2];
-    balance = Math.min(balance, 1e308); // Ограничиваем баланс
-    document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(2) + ' гривен';
-    localStorage.setItem('balance', balance.toFixed(2));
-}, 1000);
-
-// Обнуляем всё
-resetButton.addEventListener('click', function() {
-    if (confirm('Вы уверены, что хотите обнулить всё?')) {
-        balance = 1;
-        farms = [0, 0, 0];
-        document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(2) + ' гривен';
-        for (let i = 0; i < farmCounters.length; i++) {
-            farmCounters[i].textContent = farms[i];
-        }
-        localStorage.setItem('balance', balance.toFixed(2));
-        localStorage.setItem('farms', JSON.stringify(farms));
-    }
-});
+    balance += 0.01 * farms[0] + 1 * farms
