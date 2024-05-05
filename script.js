@@ -65,4 +65,7 @@ for (let i = 0; i < buyButtons.length; i++) {
 
 // Обновляем баланс каждую секунду
 setInterval(function() {
-    balance += 0.01 * farms[0] + 1 * farms
+    balance += 0.01 * farms[0] + 1 * farms[1] + 100 * farms[2];
+    document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(2) + ' гривен';
+    localStorage.setItem('balance', balance.toFixed(2));
+}, 1000);
