@@ -1,5 +1,6 @@
 let balance = localStorage.getItem('balance') ? parseFloat(localStorage.getItem('balance')) : 1;
 let farms = localStorage.getItem('farms') ? JSON.parse(localStorage.getItem('farms')) : [0, 0, 0];
+let promoUsed = localStorage.getItem('promoUsed') ? localStorage.getItem('promoUsed') : 'false';
 let button = document.getElementById('clicker-button');
 let shopButton = document.getElementById('toggle-shop');
 let buyButtons = document.getElementsByClassName('buy-farm');
@@ -73,5 +74,4 @@ setInterval(function() {
 // Обработчик событий для кнопки "Обнулить всё"
 resetButton.addEventListener('click', function() {
     if (confirm('Вы уверены, что хотите обнулить всё?')) {
-        balance = 1;
-        farms = [0, 0,
+        balance =
