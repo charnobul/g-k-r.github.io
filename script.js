@@ -74,12 +74,4 @@ setInterval(function() {
 resetButton.addEventListener('click', function() {
     if (confirm('Вы уверены, что хотите обнулить всё?')) {
         balance = 1;
-        farms = [0, 0, 0];
-        document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(2) + ' гривен';
-        for (let i = 0; i < farmCounters.length; i++) {
-            farmCounters[i].textContent = farms[i];
-        }
-        localStorage.setItem('balance', balance.toFixed(2));
-        localStorage.setItem('farms', JSON.stringify(farms));
-    }
-});
+        farms = [0, 0,
