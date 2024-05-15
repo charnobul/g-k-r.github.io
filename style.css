@@ -1,6 +1,6 @@
 body {
     /* Другие стили для body */
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    background: linear-gradient(to right, #1346ff, #353535);
     align-items: center;
     justify-content: flex-start;
     height: 100vh;
@@ -100,3 +100,24 @@ body {
 .visible {
     display: block;
 } 
+@media only screen and (max-width: 767px) {
+    #toggle-shop, .buy-farm, #reset-button {
+        display: block;
+        margin: 2vh auto; /* Центрирование кнопок */
+        padding: 10px 20px;
+        font-size: 1em;
+        border: none;
+        background-color: #4CAF50; /* Зелёный фон для кнопок */
+        color: white;
+        cursor: pointer;
+    }
+
+    #reset-button {
+        background-color: #FF0000; /* Красный фон для кнопки сброса */
+    }
+
+    .farm {
+        flex-direction: column;
+        align-items: center;
+    }
+}
