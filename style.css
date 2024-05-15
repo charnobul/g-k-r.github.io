@@ -107,17 +107,3 @@ body {
         padding: 10px 20px;
         font-size: 1em;
         border: none;
-        background-color: #4CAF50; /* Зелёный фон для кнопок */
-        color: white;
-        cursor: pointer;
-    }
-
-    #reset-button {
-        background-color: #FF0000; /* Красный фон для кнопки сброса */
-    }
-
-    .farm {
-        flex-direction: column;
-        align-items: center;
-    }
-}
