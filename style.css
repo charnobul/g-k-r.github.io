@@ -1,5 +1,7 @@
+/* style.css */
 body {
-    background: linear-gradient(to bottom left, #1346ff, #353535); /* Градиентный фон */
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     height: 100vh;
@@ -7,9 +9,11 @@ body {
     overflow-x: hidden;
     text-align: center;
     font-family: Arial, sans-serif;
+    background-color: white;
     position: relative;
     width: 100%;
     padding-top: 10vh;
+    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Градиентный фон */
 }
 
 #balance {
@@ -25,7 +29,7 @@ body {
     background: none;
     -webkit-tap-highlight-color: transparent;
     width: 80vw;
-    margin: 2vh auto; /* Центрирование кнопки */
+    margin-top: 2vh;
 }
 
 #clicker-button img {
@@ -39,13 +43,13 @@ body {
     padding: 10px 20px;
     font-size: 1em;
     border: none;
-    background-color: #4CAF50;
+    background-color: #4CAF50; /* Зелёный фон для кнопок */
     color: white;
     cursor: pointer;
 }
 
 #reset-button {
-    background-color: #FF0000;
+    background-color: #FF0000; /* Красный фон для кнопки сброса */
 }
 
 #shop {
