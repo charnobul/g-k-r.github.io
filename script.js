@@ -1,4 +1,4 @@
-let balance = localStorage.getItem('balance') ? parseFloat(localStorage.getItem('balance')) : 1;
+let let balance = localStorage.getItem('balance') ? parseFloat(localStorage.getItem('balance')) : 1;
 let farms = localStorage.getItem('farms') ? JSON.parse(localStorage.getItem('farms')) : [0, 0, 0];
 let button = document.getElementById('clicker-button');
 let shopButton = document.getElementById('toggle-shop');
