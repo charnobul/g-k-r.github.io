@@ -1,6 +1,4 @@
 body {
-    /* Другие стили для body */
-    background: linear-gradient(to right, #353535, #1346ff);
     display: flex;
     flex-direction: column;
     align-items: center;
