@@ -1,4 +1,3 @@
-/* style.css */
 body {
     /* Другие стили для body */
     background: linear-gradient(to right, #353535, #1346ff);
@@ -38,19 +37,15 @@ body {
     height: auto;
 }
 
-#toggle-shop, .buy-farm, #reset-button {
+#toggle-shop {
     display: block;
-    margin: 2vh auto; /* Центрирование кнопок */
+    margin-top: 2vh;
     padding: 10px 20px;
     font-size: 1em;
     border: none;
-    background-color: #4CAF50; /* Зелёный фон для кнопок */
+    background-color: #4CAF50;
     color: white;
     cursor: pointer;
-}
-
-#reset-button {
-    background-color: #FF0000; /* Красный фон для кнопки сброса */
 }
 
 #shop {
@@ -80,10 +75,30 @@ body {
     margin: 0 10px;
 }
 
+.buy-farm {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+#reset-button {
+    display: block;
+    margin-top: 2vh;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    background-color: #FF0000;
+    color: white;
+    cursor: pointer;
+}
+
 .hidden {
     display: none;
 }
 
 .visible {
     display: block;
-}
+} 
