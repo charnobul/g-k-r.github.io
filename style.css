@@ -1,4 +1,5 @@
 body {
+    /* Другие стили для body */
     background: linear-gradient(to right, #2e22a1, #1c1c1f);
     display: flex;
     flex-direction: column;
@@ -27,7 +28,7 @@ body {
     background: none;
     -webkit-tap-highlight-color: transparent;
     width: 80vw;
-    margin: 2vh auto;
+    margin: 2vh auto; /* Центрирование кнопки */
 }
 
 #clicker-button img {
@@ -37,7 +38,7 @@ body {
 
 #toggle-shop, .buy-farm, #reset-button {
     display: block;
-    margin: 2vh auto;
+    margin: 2vh auto; /* Центрирование кнопок */
     padding: 10px 20px;
     font-size: 1em;
     border: none;
