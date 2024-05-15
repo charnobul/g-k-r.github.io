@@ -1,6 +1,6 @@
 body {
     /* Другие стили для body */
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    background: linear-gradient(to right, #2e22a1, #1c1c1f);
     display: flex;
     flex-direction: column;
     align-items: center;
