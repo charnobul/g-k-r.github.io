@@ -1,6 +1,6 @@
- body {
-    display: flex;
-    flex-direction: column;
+body {
+    /* Другие стили для body */
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
     align-items: center;
     justify-content: flex-start;
     height: 100vh;
