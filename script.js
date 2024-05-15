@@ -37,19 +37,14 @@ button.addEventListener('click', function() {
 
 shopButton.addEventListener('click', function() {
     let shop = document.getElementById('shop');
-    if (shop.classList.contains('hidden')) {
-        shop.classList.remove('hidden');
-        shop.classList.add('visible');
-    } else {
-        shop.classList.remove('visible');
-        shop.classList.add('hidden');
-    }
+    shop.classList.toggle('hidden');
+    shop.classList.toggle('visible');
 });
 
-for (let i = 0; i < buyButtons.length; i++) {
-    buyButtons[i].addEventListener('click', function() {
-        let cost = i === 0 ? 1 : i === 1 ? 100 : 10000;
-        let income = i === 0 ? 0.01 : i === 1 ? 1 : 100;
+Array.from(buyButtons).forEach((buyButton, i) => {
+    buyButton.addEventListener('click', function() {
+        let cost = [1, 100, 10000][i];
+        let income = [0.01, 1, 100][i];
         if (balance >= cost) {
             balance -= cost;
             farms[i] += 1;
@@ -61,16 +56,14 @@ for (let i = 0; i < buyButtons.length; i++) {
             alert('Недостаточно средств для покупки фермы');
         }
     });
-}
+});
 
-// Обновляем баланс каждую секунду
 setInterval(function() {
     balance += 0.01 * farms[0] + 1 * farms[1] + 100 * farms[2];
     document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(2) + ' гривен';
     localStorage.setItem('balance', balance.toFixed(2));
 }, 1000);
 
-// Обработчик событий для кнопки "Обнулить всё"
 resetButton.addEventListener('click', function() {
     if (confirm('Вы уверены, что хотите обнулить всё?')) {
         balance = 1;
@@ -82,4 +75,4 @@ resetButton.addEventListener('click', function() {
         localStorage.setItem('balance', balance.toFixed(2));
         localStorage.setItem('farms', JSON.stringify(farms));
     }
-}); 
+});
