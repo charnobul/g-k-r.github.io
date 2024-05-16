@@ -73,19 +73,5 @@ body {
     align-items: center;
 }
 
-.farm-counter, .farm-cost {
-    margin: 0 10px;
-}
-
-.farm-quantity {
-    width: 60px;
-    margin-top: 5px;
-}
-
-.hidden {
-    display: none;
-}
-
-.visible {
-    display: block;
-}
+.farm-counter, .farm-cost, .total-cost {
+   
