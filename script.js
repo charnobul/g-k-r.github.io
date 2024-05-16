@@ -3,18 +3,15 @@ let farms = localStorage.getItem('farms') ? JSON.parse(localStorage.getItem('far
 let button = document.getElementById('clicker-button');
 let shopButton = document.getElementById('toggle-shop');
 let buyButtons = document.getElementsByClassName('buy-farm');
+let farmQuantities = document.getElementsByClassName('farm-quantity');
 let resetButton = document.getElementById('reset-button');
 let clickSound = new Audio('sounds/2e371cbd1ce9be1.mp3'); // Замените на путь к вашему аудиофайлу
 
-// Функцию updateBalance определяем в начале файла
 function updateBalance(newBalance) {
-    // Здесь должен быть код для обновления баланса на сервере
-    // Пока что мы просто обновляем значение в localStorage
     localStorage.setItem('balance', newBalance.toFixed(2));
     document.getElementById('balance').textContent = 'Баланс: ' + newBalance.toFixed(2) + ' гривен';
 }
 
-// Обновляем баланс и количество ферм при загрузке страницы
 document.getElementById('balance').textContent = 'Баланс: ' + balance.toFixed(2) + ' гривен';
 let farmCounters = document.getElementsByClassName('farm-counter');
 for (let i = 0; i < farmCounters.length; i++) {
@@ -31,9 +28,8 @@ button.addEventListener('touchend', function() {
 
 button.addEventListener('click', function() {
     balance += 0.01;
-    updateBalance(balance); // Используем функцию updateBalance для обновления баланса
+    updateBalance(balance);
 
-    // Добавляем вибрацию и проигрываем звук
     if (window.navigator && typeof window.navigator.vibrate === 'function') {
         window.navigator.vibrate(100);
     }
@@ -53,12 +49,15 @@ shopButton.addEventListener('click', function() {
 
 for (let i = 0; i < buyButtons.length; i++) {
     buyButtons[i].addEventListener('click', function() {
+        let quantity = parseInt(farmQuantities[i].value);
         let cost = i === 0 ? 1 : i === 1 ? 100 : 10000;
         let income = i === 0 ? 0.01 : i === 1 ? 1 : 100;
-        if (balance >= cost) {
-            balance -= cost;
-            farms[i] += 1;
-            updateBalance(balance); // Используем функцию updateBalance для обновления баланса
+        let totalCost = cost * quantity;
+
+        if (balance >= totalCost) {
+            balance -= totalCost;
+            farms[i] += quantity;
+            updateBalance(balance);
             farmCounters[i].textContent = farms[i];
             localStorage.setItem('farms', JSON.stringify(farms));
         } else {
@@ -67,18 +66,16 @@ for (let i = 0; i < buyButtons.length; i++) {
     });
 }
 
-// Обновляем баланс каждую секунду
 setInterval(function() {
     balance += 0.01 * farms[0] + 1 * farms[1] + 100 * farms[2];
-    updateBalance(balance); // Используем функцию updateBalance для обновления баланса
+    updateBalance(balance);
 }, 1000);
 
-// Обработчик событий для кнопки "Обнулить всё"
 resetButton.addEventListener('click', function() {
     if (confirm('Вы уверены, что хотите обнулить всё?')) {
         balance = 1;
         farms = [0, 0, 0];
-        updateBalance(balance); // Используем функцию updateBalance для обновления баланса
+        updateBalance(balance);
         for (let i = 0; i < farmCounters.length; i++) {
             farmCounters[i].textContent = farms[i];
         }
