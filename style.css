@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to right, #2e22a1, #1c1c1f);
+    background: linear-gradient(to bottom right, #1c1b38, #5253ff);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -73,4 +73,6 @@ body {
     align-items: center;
 }
 
-.farm
+.farm-counter, .farm-cost, .total-cost {
+    margin-top: 5px;
+}
