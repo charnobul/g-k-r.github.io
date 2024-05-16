@@ -7,7 +7,6 @@ let farmQuantities = document.getElementsByClassName('farm-quantity');
 let totalCosts = document.getElementsByClassName('total-cost');
 let resetButton = document.getElementById('reset-button');
 let clickSound = new Audio('sounds/2e371cbd1ce9be1.mp3'); // Замените на путь к вашему аудиофайлу
-let notification = document.getElementById('notification');
 
 function updateBalance(newBalance) {
     localStorage.setItem('balance', newBalance.toFixed(2));
@@ -70,7 +69,6 @@ for (let i = 0; i < buyButtons.length; i++) {
             updateBalance(balance);
             farmCounters[i].textContent = farms[i];
             localStorage.setItem('farms', JSON.stringify(farms));
-            showNotification('Покупка совершена!');
         } else {
             alert('Недостаточно средств для покупки фермы');
         }
@@ -93,11 +91,3 @@ resetButton.addEventListener('click', function() {
         localStorage.setItem('farms', JSON.stringify(farms));
     }
 });
-
-function showNotification(message) {
-    notification.textContent = message;
-    notification.classList.remove('hidden');
-    setTimeout(() => {
-        notification.classList.add('hidden');
-    }, 2000);
-}
