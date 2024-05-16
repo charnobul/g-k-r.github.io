@@ -4,8 +4,10 @@ let button = document.getElementById('clicker-button');
 let shopButton = document.getElementById('toggle-shop');
 let buyButtons = document.getElementsByClassName('buy-farm');
 let farmQuantities = document.getElementsByClassName('farm-quantity');
+let totalCosts = document.getElementsByClassName('total-cost');
 let resetButton = document.getElementById('reset-button');
 let clickSound = new Audio('sounds/2e371cbd1ce9be1.mp3'); // Замените на путь к вашему аудиофайлу
+let notification = document.getElementById('notification');
 
 function updateBalance(newBalance) {
     localStorage.setItem('balance', newBalance.toFixed(2));
@@ -47,6 +49,14 @@ shopButton.addEventListener('click', function() {
     }
 });
 
+for (let i = 0; i < farmQuantities.length; i++) {
+    farmQuantities[i].addEventListener('input', function() {
+        let quantity = parseInt(farmQuantities[i].value);
+        let cost = i === 0 ? 1 : i === 1 ? 100 : 10000;
+        totalCosts[i].textContent = 'Итоговая цена: ' + (cost * quantity) + ' гривен';
+    });
+}
+
 for (let i = 0; i < buyButtons.length; i++) {
     buyButtons[i].addEventListener('click', function() {
         let quantity = parseInt(farmQuantities[i].value);
@@ -60,6 +70,7 @@ for (let i = 0; i < buyButtons.length; i++) {
             updateBalance(balance);
             farmCounters[i].textContent = farms[i];
             localStorage.setItem('farms', JSON.stringify(farms));
+            showNotification('Покупка совершена!');
         } else {
             alert('Недостаточно средств для покупки фермы');
         }
@@ -82,3 +93,11 @@ resetButton.addEventListener('click', function() {
         localStorage.setItem('farms', JSON.stringify(farms));
     }
 });
+
+function showNotification(message) {
+    notification.textContent = message;
+    notification.classList.remove('hidden');
+    setTimeout(() => {
+        notification.classList.add('hidden');
+    }, 2000);
+}
