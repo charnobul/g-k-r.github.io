@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to bottom right, #1c1b38, #5253ff);
+    background: linear-gradient(to bottom right, #1c1b38 0%, #5253ff 50%, #1c1b38 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,7 +35,7 @@ body {
     height: auto;
 }
 
-#toggle-shop, .buy-farm, #reset-button {
+#toggle-shop, .buy-farm, .buy-upgrade, #reset-button {
     display: block;
     margin: 2vh auto;
     padding: 10px 20px;
@@ -55,24 +55,36 @@ body {
     margin-top: 2vh;
 }
 
-.farm {
+.farm, .upgrade {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 2vh;
 }
 
-.farm-image {
+.farm-image, .upgrade-image {
     width: 50px;
     height: 50px;
 }
 
-.farm-info {
+.farm-info, .upgrade-info {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.farm-counter, .farm-cost, .total-cost {
-    margin-top: 5px;
+.farm-counter, .farm-cost, .upgrade-counter, .upgrade-cost {
+    margin: 0 10px;
+}
+
+.farm-quantity, .upgrade-quantity {
+    margin: 0 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
 }
