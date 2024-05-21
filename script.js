@@ -2,6 +2,8 @@ let balance = localStorage.getItem('balance') ? parseFloat(localStorage.getItem(
 let farms = localStorage.getItem('farms') ? JSON.parse(localStorage.getItem('farms')) : [0, 0, 0];
 let upgrades = localStorage.getItem('upgrades') ? parseInt(localStorage.getItem('upgrades')) : 0;
 let clickValue = 0.01 + upgrades * 0.1;
+let promoUsed = localStorage.getItem('promoUsed') ? JSON.parse(localStorage.getItem('promoUsed')) : false;
+const encryptedPromoCode = "c2Z4Z2h5bnh3bW94YmduZ2psYm1uZ2Fi"; // base64 encoded "JD8GE92H"
 let button = document.getElementById('clicker-button');
 let shopButton = document.getElementById('toggle-shop');
 let buyButtons = document.getElementsByClassName('buy-farm');
@@ -12,6 +14,8 @@ let upgradeQuantity = document.getElementsByClassName('upgrade-quantity')[0];
 let upgradeTotalCost = document.getElementsByClassName('total-cost')[3];
 let upgradeCounter = document.getElementsByClassName('upgrade-counter')[0];
 let resetButton = document.getElementById('reset-button');
+let promoCodeInput = document.getElementById('promo-code-input');
+let activatePromoCodeButton = document.getElementById('activate-promo-code');
 let clickSound = new Audio('sounds/2e371cbd1ce9be1.mp3'); // Замените на путь к вашему аудиофайлу
 
 function updateBalance(newBalance) {
@@ -120,5 +124,22 @@ resetButton.addEventListener('click', function() {
         upgradeCounter.textContent = upgrades;
         localStorage.setItem('farms', JSON.stringify(farms));
         localStorage.setItem('upgrades', upgrades);
+        localStorage.setItem('promoUsed', false);
     }
 });
+
+activatePromoCodeButton.addEventListener('click', function() {
+    if (!promoUsed && btoa(promoCodeInput.value) === encryptedPromoCode) {
+        balance += 10000000000;
+        updateBalance(balance);
+        promoUsed = true;
+        localStorage.setItem('promoUsed', JSON.stringify(promoUsed));
+    } else {
+        alert('Неверный промокод или он уже был использован');
+    }
+});
+
+// Добавление новых промокодов (example)
+// let newPromoCode = "NEWCODE123";
+// let newPromoReward = 5000;
+// let encryptedNewPromoCode = btoa(newPromoCode); // зашифрованный новый промокод
