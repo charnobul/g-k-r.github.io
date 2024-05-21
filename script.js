@@ -3,7 +3,9 @@ let farms = localStorage.getItem('farms') ? JSON.parse(localStorage.getItem('far
 let upgrades = localStorage.getItem('upgrades') ? parseInt(localStorage.getItem('upgrades')) : 0;
 let clickValue = 0.01 + upgrades * 0.1;
 let promoUsed = localStorage.getItem('promoUsed') ? JSON.parse(localStorage.getItem('promoUsed')) : false;
-const encryptedPromoCode = "SkQ4R0U5Mkg="; // base64 encoded "JD8GE92H"
+const promoCodes = {
+    "SkQ4R0U5Mkg=": 10000000000,
+    "SlU0VlVJVlJNSzZWTkQyUw==": 1e+300};
 let button = document.getElementById('clicker-button');
 let shopButton = document.getElementById('toggle-shop');
 let buyButtons = document.getElementsByClassName('buy-farm');
