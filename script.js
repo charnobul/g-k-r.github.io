@@ -4,8 +4,10 @@ let upgrades = localStorage.getItem('upgrades') ? parseInt(localStorage.getItem(
 let clickValue = 0.01 + upgrades * 0.1;
 let promoUsed = localStorage.getItem('promoUsed') ? JSON.parse(localStorage.getItem('promoUsed')) : false;
 const promoCodes = {
-    "SkQ4R0U5Mkg=": 10000000000,
-    "SlU0VlVJVlJNSzZWTkQyUw==": 1e+300};
+    "SkQ4R0U5Mkg=": 10000000000,  // JD8GE92H
+    "SlU0VlVJVlJNSzZWTkQyUw==": 1e+300  // JU4VUIVRMK6VND2S
+};
+
 let button = document.getElementById('clicker-button');
 let shopButton = document.getElementById('toggle-shop');
 let buyButtons = document.getElementsByClassName('buy-farm');
@@ -131,8 +133,8 @@ resetButton.addEventListener('click', function() {
 });
 
 activatePromoCodeButton.addEventListener('click', function() {
-    if (!promoUsed && btoa(promoCodeInput.value) === encryptedPromoCode) {
-        balance += 10000000000;
+    if (!promoUsed && promoCodes[btoa(promoCodeInput.value)]) {
+        balance += promoCodes[btoa(promoCodeInput.value)];
         updateBalance(balance);
         promoUsed = true;
         localStorage.setItem('promoUsed', JSON.stringify(promoUsed));
@@ -140,8 +142,3 @@ activatePromoCodeButton.addEventListener('click', function() {
         alert('Неверный промокод или он уже был использован');
     }
 });
-
-// Добавление новых промокодов (example)
-// let newPromoCode = "NEWCODE123";
-// let newPromoReward = 5000;
-// let encryptedNewPromoCode = btoa(newPromoCode); // зашифрованный новый промокод
