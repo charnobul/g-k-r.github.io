@@ -4,8 +4,8 @@ let upgrades = localStorage.getItem('upgrades') ? parseInt(localStorage.getItem(
 let clickValue = 0.01 + upgrades * 0.1;
 let usedPromoCodes = localStorage.getItem('usedPromoCodes') ? JSON.parse(localStorage.getItem('usedPromoCodes')) : [];
 const promoCodes = {
-    "SkQ4R0U5Mkg=": 10000000000,
-    "SlU0VlVJVlJNSzZWTkQyUw==": 1e+300 
+    "SkQ4R0U5Mkg=": 10000000000,  // JD8GE92H
+    "SlU0VlVJVlJNSzZWTkQyUw==": 1e+300  // JU4VUIVRMK6VND2S
 };
 
 const baseFarmCosts = [1, 100, 10000];
@@ -58,46 +58,34 @@ shopButton.addEventListener('click', function() {
     if (shop.classList.contains('hidden')) {
         shop.classList.remove('hidden');
         shop.classList.add('visible');
-        updateAllCosts();
     } else {
         shop.classList.remove('visible');
         shop.classList.add('hidden');
     }
 });
 
-function getFarmCost(baseCost, farmIndex, quantity) {
+function getFarmCost(baseCost, quantity) {
     let totalCost = 0;
     for (let i = 0; i < quantity; i++) {
-        totalCost += baseCost * Math.pow(1.7, farms[farmIndex] + i);
+        totalCost += baseCost * Math.pow(1.7, farms[i]);
     }
     return totalCost;
 }
 
-function updateAllCosts() {
-    for (let i = 0; i < farmQuantities.length; i++) {
-        let quantity = parseInt(farmQuantities[i].value) || 0;
-        let baseCost = baseFarmCosts[i];
-        let totalCost = getFarmCost(baseCost, i, quantity);
-        totalCosts[i].textContent = 'Итоговая цена: ' + totalCost.toFixed(2) + ' гривен';
-    }
-    let upgradeQuantityValue = parseInt(upgradeQuantity.value) || 0;
-    upgradeTotalCost.textContent = 'Итоговая цена: ' + (1 * upgradeQuantityValue) + ' гривен';
-}
-
 for (let i = 0; i < farmQuantities.length; i++) {
     farmQuantities[i].addEventListener('input', function() {
-        let quantity = parseInt(farmQuantities[i].value) || 0;
+        let quantity = parseInt(farmQuantities[i].value);
         let baseCost = baseFarmCosts[i];
-        let totalCost = getFarmCost(baseCost, i, quantity);
+        let totalCost = getFarmCost(baseCost, quantity);
         totalCosts[i].textContent = 'Итоговая цена: ' + totalCost.toFixed(2) + ' гривен';
     });
 }
 
 for (let i = 0; i < buyButtons.length; i++) {
     buyButtons[i].addEventListener('click', function() {
-        let quantity = parseInt(farmQuantities[i].value) || 0;
+        let quantity = parseInt(farmQuantities[i].value);
         let baseCost = baseFarmCosts[i];
-        let totalCost = getFarmCost(baseCost, i, quantity);
+        let totalCost = getFarmCost(baseCost, quantity);
 
         if (balance >= totalCost) {
             balance -= totalCost;
@@ -105,7 +93,6 @@ for (let i = 0; i < buyButtons.length; i++) {
             updateBalance(balance);
             farmCounters[i].textContent = farms[i];
             localStorage.setItem('farms', JSON.stringify(farms));
-            updateAllCosts();
         } else {
             alert('Недостаточно средств для покупки фермы');
         }
@@ -113,12 +100,12 @@ for (let i = 0; i < buyButtons.length; i++) {
 }
 
 upgradeQuantity.addEventListener('input', function() {
-    let quantity = parseInt(upgradeQuantity.value) || 0;
+    let quantity = parseInt(upgradeQuantity.value);
     upgradeTotalCost.textContent = 'Итоговая цена: ' + (1 * quantity) + ' гривен';
 });
 
 buyUpgradeButton.addEventListener('click', function() {
-    let quantity = parseInt(upgradeQuantity.value) || 0;
+    let quantity = parseInt(upgradeQuantity.value);
     let totalCost = 1 * quantity;
 
     if (balance >= totalCost) {
@@ -128,7 +115,6 @@ buyUpgradeButton.addEventListener('click', function() {
         updateBalance(balance);
         upgradeCounter.textContent = upgrades;
         localStorage.setItem('upgrades', upgrades);
-        updateAllCosts();
     } else {
         alert('Недостаточно средств для покупки улучшения');
     }
@@ -154,7 +140,6 @@ resetButton.addEventListener('click', function() {
         localStorage.setItem('upgrades', upgrades);
         localStorage.setItem('promoUsed', false);
         localStorage.setItem('usedPromoCodes', JSON.stringify([]));
-        updateAllCosts();
     }
 });
 
