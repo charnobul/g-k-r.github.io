@@ -8,6 +8,7 @@ const promoCodes = {
     "SlU0VlVJVlJNSzZWTkQyUw==": 1e+300  // JU4VUIVRMK6VND2S
 };
 
+const baseFarmCosts = [1, 100, 10000];
 let button = document.getElementById('clicker-button');
 let shopButton = document.getElementById('toggle-shop');
 let buyButtons = document.getElementsByClassName('buy-farm');
@@ -63,19 +64,28 @@ shopButton.addEventListener('click', function() {
     }
 });
 
+function getFarmCost(baseCost, quantity) {
+    let totalCost = 0;
+    for (let i = 0; i < quantity; i++) {
+        totalCost += baseCost * Math.pow(1.7, farms[i]);
+    }
+    return totalCost;
+}
+
 for (let i = 0; i < farmQuantities.length; i++) {
     farmQuantities[i].addEventListener('input', function() {
         let quantity = parseInt(farmQuantities[i].value);
-        let cost = i === 0 ? 1 : i === 1 ? 100 : 10000;
-        totalCosts[i].textContent = 'Итоговая цена: ' + (cost * quantity) + ' гривен';
+        let baseCost = baseFarmCosts[i];
+        let totalCost = getFarmCost(baseCost, quantity);
+        totalCosts[i].textContent = 'Итоговая цена: ' + totalCost.toFixed(2) + ' гривен';
     });
 }
 
 for (let i = 0; i < buyButtons.length; i++) {
     buyButtons[i].addEventListener('click', function() {
         let quantity = parseInt(farmQuantities[i].value);
-        let cost = i === 0 ? 1 : i === 1 ? 100 : 10000;
-        let totalCost = cost * quantity;
+        let baseCost = baseFarmCosts[i];
+        let totalCost = getFarmCost(baseCost, quantity);
 
         if (balance >= totalCost) {
             balance -= totalCost;
