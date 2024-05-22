@@ -2,13 +2,8 @@ let balance = localStorage.getItem('balance') ? parseFloat(localStorage.getItem(
 let farms = localStorage.getItem('farms') ? JSON.parse(localStorage.getItem('farms')) : [0, 0, 0];
 let upgrades = localStorage.getItem('upgrades') ? parseInt(localStorage.getItem('upgrades')) : 0;
 let clickValue = 0.01 + upgrades * 0.1;
-let usedPromoCodes = localStorage.getItem('usedPromoCodes') ? JSON.parse(localStorage.getItem('usedPromoCodes')) : [];
-const promoCodes = {
-    "SkQ4R0U5Mkg=": 10000000000,  // JD8GE92H
-    "SlU0VlVJVlJNSzZWTkQyUw==": 1e+300  // JU4VUIVRMK6VND2S
-};
-
-const baseFarmCosts = [1, 100, 10000];
+let promoUsed = localStorage.getItem('promoUsed') ? JSON.parse(localStorage.getItem('promoUsed')) : false;
+const encryptedPromoCode = "c2Z4Z2h5bnh3bW94YmduZ2psYm1uZ2Fi"; // base64 encoded "JD8GE92H"
 let button = document.getElementById('clicker-button');
 let shopButton = document.getElementById('toggle-shop');
 let buyButtons = document.getElementsByClassName('buy-farm');
@@ -64,28 +59,19 @@ shopButton.addEventListener('click', function() {
     }
 });
 
-function getFarmCost(baseCost, quantity) {
-    let totalCost = 0;
-    for (let i = 0; i < quantity; i++) {
-        totalCost += baseCost * Math.pow(1.7, farms[i]);
-    }
-    return totalCost;
-}
-
 for (let i = 0; i < farmQuantities.length; i++) {
     farmQuantities[i].addEventListener('input', function() {
         let quantity = parseInt(farmQuantities[i].value);
-        let baseCost = baseFarmCosts[i];
-        let totalCost = getFarmCost(baseCost, quantity);
-        totalCosts[i].textContent = 'Итоговая цена: ' + totalCost.toFixed(2) + ' гривен';
+        let cost = i === 0 ? 1 : i === 1 ? 100 : 10000;
+        totalCosts[i].textContent = 'Итоговая цена: ' + (cost * quantity) + ' гривен';
     });
 }
 
 for (let i = 0; i < buyButtons.length; i++) {
     buyButtons[i].addEventListener('click', function() {
         let quantity = parseInt(farmQuantities[i].value);
-        let baseCost = baseFarmCosts[i];
-        let totalCost = getFarmCost(baseCost, quantity);
+        let cost = i === 0 ? 1 : i === 1 ? 100 : 10000;
+        let totalCost = cost * quantity;
 
         if (balance >= totalCost) {
             balance -= totalCost;
@@ -139,18 +125,15 @@ resetButton.addEventListener('click', function() {
         localStorage.setItem('farms', JSON.stringify(farms));
         localStorage.setItem('upgrades', upgrades);
         localStorage.setItem('promoUsed', false);
-        localStorage.setItem('usedPromoCodes', JSON.stringify([]));
     }
 });
 
 activatePromoCodeButton.addEventListener('click', function() {
-    let inputCode = promoCodeInput.value;
-    let encryptedCode = btoa(inputCode);
-    if (!usedPromoCodes.includes(encryptedCode) && promoCodes[encryptedCode]) {
-        balance += promoCodes[encryptedCode];
+    if (!promoUsed && btoa(promoCodeInput.value) === encryptedPromoCode) {
+        balance += 10000000000;
         updateBalance(balance);
-        usedPromoCodes.push(encryptedCode);
-        localStorage.setItem('usedPromoCodes', JSON.stringify(usedPromoCodes));
+        promoUsed = true;
+        localStorage.setItem('promoUsed', JSON.stringify(promoUsed));
     } else {
         alert('Неверный промокод или он уже был использован');
     }
@@ -160,4 +143,3 @@ activatePromoCodeButton.addEventListener('click', function() {
 // let newPromoCode = "NEWCODE123";
 // let newPromoReward = 5000;
 // let encryptedNewPromoCode = btoa(newPromoCode); // зашифрованный новый промокод
-// promoCodes[encryptedNewPromoCode] = newPromoReward;
